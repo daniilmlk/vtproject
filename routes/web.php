@@ -5,8 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 
-Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
+Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 Route::resource('posts', PostController::class);
+Route::post('/posts/{post}/like', [PostController::class, 'toggleLike'])->name('posts.like');
+Route::post('/comments/{comment}/like', [CommentController::class, 'toggleLike'])->name('comments.like');
+
 
 
 Route::get('/', function () {

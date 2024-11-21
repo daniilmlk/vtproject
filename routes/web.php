@@ -13,17 +13,24 @@ Route::post('/comments/{comment}/like', [CommentController::class, 'toggleLike']
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
+Route::post('/logout', function () {
+    auth()->logout();
+    return redirect('/login');
+})->name('logout');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::redirect('/dashboard', '/profile')->middleware(['auth', 'verified']);
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // New route for "My Profile"
+    Route::get('/my-profile', [ProfileController::class, 'myProfile'])->name('profile.myprofile');
 });
+
 
 require __DIR__.'/auth.php';

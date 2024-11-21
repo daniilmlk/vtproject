@@ -2,15 +2,15 @@
     <div class="flex items-center">
         <!-- Logo -->
         <div class="logo mr-6">
-            <a href="{{ route('dashboard') }}" class="text-white text-lg font-bold">
+            <h1 class="text-white text-lg font-bold">
                 MyBlog
-            </a>
+            </h1>
         </div>
 
         <!-- Navigation Links -->
         <div>
-            <a href="{{ route('dashboard') }}">Dashboard</a>
-            <a href="{{ route('posts.index') }}">Posts</a>
+            <a href="{{ route('profile.myprofile') }}">My Profile</a>
+            <a href="{{ route('posts.index') }}">Feed</a>
             <a href="{{ route('posts.create') }}">Create Post</a>
         </div>
     </div>
@@ -19,16 +19,21 @@
     <div class="flex items-center">
         <div class="dropdown">
             <button class="text-white font-medium">
-                {{ Auth::user()->name }}
+                {{ optional(Auth::user())->name }}
                 <span>&#9662;</span> <!-- Down arrow -->
             </button>
-            <div class="dropdown-menu">
-                <a href="{{ route('profile.edit') }}">Profile</a>
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit" class="block w-full text-left">Log Out</button>
-                </form>
+            <!-- Dropdown menu -->
+            <div class="dropdown">
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <!-- Add logout button -->
+                    <form action="{{ route('logout') }}" method="POST" class="dropdown-item">
+                        @csrf
+                        @method('POST')
+                        <button type="submit" class="logout-button">Logout</button>
+                    </form>
+                </div>
             </div>
+
         </div>
     </div>
 </nav>

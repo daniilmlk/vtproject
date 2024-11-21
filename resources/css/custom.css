@@ -355,3 +355,266 @@ body {
 .comments-section {
     margin-top: 20px;
 }
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, #6f42c1, #f3f3f3);
+    padding: 20px;
+}
+
+.auth-card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.auth-title {
+    font-size: 24px;
+    color: #6f42c1;
+    margin-bottom: 10px;
+}
+
+.auth-subtitle {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.auth-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.auth-input:focus {
+    border-color: #6f42c1;
+}
+
+.auth-error {
+    font-size: 12px;
+    color: red;
+    margin-top: 5px;
+}
+
+.form-actions {
+    margin-top: 20px;
+}
+
+.auth-button {
+    background: #6f42c1;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.auth-button:hover {
+    background: #5a34a4;
+}
+
+.form-footer {
+    margin-top: 20px;
+}
+
+.form-footer a {
+    color: #6f42c1;
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+.profile-container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile Info Section */
+.profile-info {
+    margin-bottom: 30px; /* Space between profile section and other content */
+    padding: 20px; /* Padding around profile info */
+    border-bottom: 2px solid #f4f4f4; /* Border below profile info */
+}
+
+/* Profile Header - Avatar and Name */
+.profile-header {
+    display: flex;
+    align-items: flex-end; /* Align name to the bottom of the avatar */
+    margin-bottom: 10px; /* Space between profile header and the bio section */
+}
+
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    background-color: #d3d3d3; /* Grey background for default avatar */
+    border-radius: 50%; /* Circle shape */
+    overflow: hidden;
+    margin-right: 20px; /* Space between profile picture and name */
+}
+
+.profile-avatar .avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure image covers the area */
+}
+
+.user-name h2 {
+    font-size: 36px; /* Larger font for the name */
+    font-weight: bold;
+    margin: 0; /* Remove margin from name */
+}
+
+/* Bio and Edit Profile Button Section */
+.bio-and-edit {
+    display: flex;
+    justify-content: space-between; /* Space between bio and the edit button */
+    align-items: center; /* Vertically align the items */
+}
+
+.user-bio {
+    font-size: 16px; /* Regular font for the bio */
+    color: #666;
+    background: #e0e7ff; /* Light blue for cloud-like effect */
+    border-radius: 15px; /* Rounded corners */
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    flex-grow: 1; /* Bio takes up all available space */
+    margin-right: 20px; /* Space between bio and edit button */
+}
+
+/* Edit Profile Button */
+.edit-profile-btn {
+    display: flex;
+    justify-content: flex-end; /* Align the button to the right */
+    align-items: center; /* Center button vertically */
+}
+
+.btn-edit-profile {
+    padding: 10px 20px;
+    background-color: #6f42c1; /* Main color */
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 400px;
+}
+
+.btn-edit-profile:hover {
+    background-color: #5a36a0; /* Darker shade of purple on hover */
+}
+
+
+
+/* Profile Stats Container */
+.profile-stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-item {
+    text-align: center;
+    flex: 1;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.stat-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #777;
+}
+
+/* Post Content and Like Button Styling */
+.post-card {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+}
+
+.post-actions {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.like-count {
+    font-size: 14px;
+    color: #555;
+    margin-right: 10px;
+}
+
+.like-button {
+    padding: 8px 16px;
+    background-color: #6f42c1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.like-button:hover {
+    background-color: #5a36a0;
+}
+
+.user-posts .post-card {
+    padding: 15px;
+    background-color: #fff;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.logout-button {
+    background-color: transparent;
+    border: none;
+    color: #d9534f; /* Bootstrap red color for logout */
+    font-size: 16px;
+    cursor: pointer;
+    text-align: left;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.logout-button:hover {
+    background-color: #f2dede;
+    color: #c9302c;
+}
+
+
+

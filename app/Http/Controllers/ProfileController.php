@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\Post;
 
 class ProfileController extends Controller
 {
@@ -57,4 +58,21 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    public function myProfile()
+{
+    $user = auth()->user();
+    
+    // Fetch user's posts and include likes relationship
+    $posts = Post::where('user_id', $user->id)->latest()->get();
+    $userPosts = Post::where('user_id', Auth::id())->with('likes')->get();
+
+    // Calculate total likes for all posts
+    $totalLikes = $userPosts->sum(function ($post) {
+        return $post->likes->count(); // Sum likes for each post
+    });
+
+    return view('myprofile', compact('user', 'posts', 'totalLikes'));
+}
+
 }

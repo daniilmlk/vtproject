@@ -20,7 +20,7 @@ Route::post('/logout', function () {
     return redirect('/login');
 })->name('logout');
 
-Route::redirect('/dashboard', '/profile')->middleware(['auth', 'verified']);
+// Route::redirect('/dashboard', '/profile')->middleware(['auth', 'verified']);
 
 
 Route::middleware('auth')->group(function () {

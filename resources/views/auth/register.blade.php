@@ -5,7 +5,7 @@
     <div class="auth-card">
         <h1 class="auth-title">Join Us!</h1>
         <p class="auth-subtitle">Create a new account</p>
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
             @csrf
 
             <div class="form-group">
@@ -39,6 +39,14 @@
                 <label for="password-confirm">Confirm Password</label>
                 <input id="password-confirm" type="password" name="password_confirmation" class="auth-input"
                     required autocomplete="new-password">
+            </div>
+
+            <div class="form-group">
+                <label for="profile_picture">Profile Picture</label>
+                <input id="profile_picture" type="file" name="profile_picture" class="auth-input @error('profile_picture') is-invalid @enderror">
+                @error('profile_picture')
+                <span class="auth-error">{{ $message }}</span>
+                @enderror
             </div>
 
             <div class="form-actions">

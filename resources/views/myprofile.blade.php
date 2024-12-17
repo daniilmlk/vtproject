@@ -43,7 +43,7 @@
         <div class="post-card">
             <!-- Post Header -->
             <div class="post-header">
-                <div class="user-avatar"></div>
+            <img src="{{ asset('storage/' . $user->profile_picture) }}" alt="Profile Picture" class="user-avatar">
                 <div class="user-info">
                     <p class="user-name">{{ $user->name }}</p>
                     <p class="post-time">{{ $post->created_at->diffForHumans() }}</p>

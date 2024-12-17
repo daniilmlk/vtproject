@@ -11,7 +11,7 @@
         <div class="post-card">
             <!-- Post Header -->
             <div class="post-header">
-                <div class="user-avatar"></div>
+            <img src="{{ asset('storage/' . $post->user->profile_picture) }}" alt="Profile Picture" class="user-avatar">
                 <div class="user-info">
                     <p class="user-name">{{ $post->user->name }}</p>
                     <p class="post-time">{{ $post->created_at->diffForHumans() }}</p>
@@ -37,7 +37,7 @@
                     @foreach($post->comments as $comment)
                     <div class="comment">
                         <div class="comment-header">
-                            <div class="comment-user-avatar"></div>
+                            <img src="{{ asset('storage/' . $post->user->profile_picture) }}" alt="Profile Picture" class="comment-user-avatar">
                             <p class="comment-user-name"><strong>{{ $comment->user->name }}</strong></p>
                         </div>
                         <p class="comment-content">{{ $comment->content }}</p>

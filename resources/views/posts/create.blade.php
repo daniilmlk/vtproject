@@ -10,7 +10,7 @@
 
             <!-- User Info -->
             <div class="user-info">
-                <div class="user-avatar"></div>
+                <img src="{{ asset('storage/' . Auth::user()->profile_picture) }}" alt="Profile Picture" class="user-avatar">
                 <span class="user-name">{{ Auth::user()->name }}</span>
             </div>
 

@@ -30,6 +30,9 @@ Route::middleware('auth')->group(function () {
 
     // New route for "My Profile"
     Route::get('/my-profile', [ProfileController::class, 'myProfile'])->name('profile.myprofile');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
 });
 
 

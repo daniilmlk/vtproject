@@ -24,12 +24,11 @@ module.exports = {
     theme: {
       extend: {
         colors: {
-          primary: '#4C9EFF',   // A lighter blue
-          secondary: '#f0f0f0',  // Light gray background
-          dark: '#1A202C',       // Dark text for posts
-          accent: '#FF7F50',     // Coral accent color for buttons
+          primary: '#4C9EFF',   
+          secondary: '#f0f0f0',  
+          dark: '#1A202C',      
+          accent: '#FF7F50',     
         }
       }
     }
   }
-  

@@ -127,7 +127,7 @@ body {
     margin-bottom: 1rem;
 }
 
-.user-avatar {
+.create-page-user-avatar {
     width: 50px;
     height: 50px;
     background-color: #ddd;
@@ -208,12 +208,15 @@ body {
     height: 40px;
     background-color: #ddd;
     border-radius: 50%;
+    overflow: hidden;
+    object-fit: cover;
     margin-right: 10px;
 }
 
 .user-info {
     display: flex;
     flex-direction: column;
+    margin-top: 14px;
 }
 
 .user-name {
@@ -246,8 +249,10 @@ body {
 .comment-user-avatar {
     width: 30px;
     height: 30px;
-    background-color: #ddd;
+    background-color: #d3d3d3;
     border-radius: 50%;
+    overflow: hidden;
+    object-fit: cover;
     margin-right: 10px;
 }
 
@@ -615,6 +620,81 @@ body {
     background-color: #f2dede;
     color: #c9302c;
 }
+
+/* Edit Profile Page Container */
+.edit-profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 15px;
+}
+
+/* Section Title */
+.edit-profile-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* Form Group */
+.edit-form-group {
+    margin-bottom: 20px;
+}
+
+/* Form Labels */
+.edit-form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+}
+
+/* Text Inputs */
+.edit-form-input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.edit-form-input:focus {
+    border-color: #6f42c1;
+    outline: none;
+}
+
+/* File Input */
+.edit-form-file {
+    padding: 10px 0;
+}
+
+/* Submit Button */
+.edit-submit-btn {
+    padding: 12px 25px;
+    background-color: #6f42c1;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.edit-submit-btn:hover {
+    background-color: #5a36a0;
+}
+
+/* Error Message */
+.edit-error-message {
+    color: #e3342f;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
 
 
 

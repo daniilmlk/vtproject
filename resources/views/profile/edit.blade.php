@@ -1,29 +1,42 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-profile-information-form')
-                </div>
+@section('content')
+    <div class="edit-profile-container">
+        <h1 class="edit-profile-title">Edit Profile</h1>
+
+        <form action="{{ route('profile.update', $user->id) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+
+            {{-- Name Field --}}
+            <div class="edit-form-group">
+                <label for="name" class="edit-form-label">Name</label>
+                <input type="text" id="name" name="name" class="edit-form-input" value="{{ old('name', $user->name) }}" required>
+                @error('name')
+                    <p class="edit-error-message">{{ $message }}</p>
+                @enderror
             </div>
 
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-password-form')
-                </div>
+            {{-- Password Field --}}
+            <div class="edit-form-group">
+                <label for="password" class="edit-form-label">New Password (optional)</label>
+                <input type="password" id="password" name="password" class="edit-form-input">
+                @error('password')
+                    <p class="edit-error-message">{{ $message }}</p>
+                @enderror
             </div>
 
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.delete-user-form')
-                </div>
+            {{-- Avatar Upload --}}
+            <div class="edit-form-group">
+                <label for="avatar" class="edit-form-label">Avatar</label>
+                <input type="file" id="avatar" name="avatar" class="edit-form-file">
+                @error('avatar')
+                    <p class="edit-error-message">{{ $message }}</p>
+                @enderror
             </div>
-        </div>
+
+            {{-- Submit Button --}}
+            <button type="submit" class="edit-submit-btn">Save Changes</button>
+        </form>
     </div>
-</x-app-layout>
+@endsection

@@ -77,7 +77,7 @@
 
 /* Body background */
 body {
-    background-color: #f3f4f6; /* Tailwind's gray-100 */
+    background-color: #f3f4f6;
 }
 
 .dropdown {
@@ -694,6 +694,98 @@ body {
     font-size: 14px;
     margin-top: 5px;
 }
+
+.admin-dashboard-container {
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.admin-title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #333;
+    width: 100%;
+}
+
+.admin-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    gap: 20px;
+    width: 100%;
+}
+
+.admin-stat-item {
+    flex: 1;
+    background-color: #e0e7ff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #777;
+    margin-top: 8px;
+}
+
+.admin-section {
+    margin-top: 40px;
+    flex: 1;
+    min-width: 300px;
+}
+
+.admin-section-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.admin-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.admin-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f4f4f4;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.btn-delete {
+    padding: 6px 12px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-delete:hover {
+    background-color: #b52a37;
+}
+
+
 
 
 

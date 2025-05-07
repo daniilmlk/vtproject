@@ -11,6 +11,7 @@ use Illuminate\View\View;
 use App\Models\Post;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -51,27 +52,6 @@ class ProfileController extends Controller
         return redirect()->route('profile.edit')->with('success', 'Profile updated!');
     }
 
-    /**
-     * Delete the user's account.
-     */
-    public function destroy(Request $request): RedirectResponse
-    {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current_password'],
-        ]);
-
-        $user = $request->user();
-
-        Auth::logout();
-
-        $user->delete();
-
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return Redirect::to('/');
-    }
-
     public function myProfile()
 {
     $user = auth()->user();
@@ -87,5 +67,14 @@ class ProfileController extends Controller
 
     return view('myprofile', compact('user', 'posts', 'totalLikes'));
 }
+public function destroy(User $user): RedirectResponse
+    {
+        if (!session('is_admin')) {
+            abort(403);
+        }
+
+        $user->delete();
+        return redirect()->route('admin.dashboard')->with('success', 'User deleted.');
+    }
 
 }

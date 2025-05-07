@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Log;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Http\RedirectResponse;
 
 
 class PostController extends Controller
@@ -59,6 +60,15 @@ class PostController extends Controller
         return response()->json(['error' => 'Unable to process request'], 500);
     }
 }
+public function destroy(Post $post): RedirectResponse
+    {
+        if (!session('is_admin')) {
+            abort(403);
+        }
+
+        $post->delete();
+        return redirect()->route('admin.dashboard')->with('success', 'Post deleted.');
+    }
 
 
 }

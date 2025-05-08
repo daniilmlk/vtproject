@@ -64,4 +64,26 @@ public function friends()
                 ->withPivot('status');
 }
 
+public function sentMessages()
+{
+    return $this->hasMany(Message::class, 'sender_id');
+}
+
+public function chatsAsUserOne()
+{
+    return $this->hasMany(Chat::class, 'user_one_id');
+}
+
+public function chatsAsUserTwo()
+{
+    return $this->hasMany(Chat::class, 'user_two_id');
+}
+
+public function allChats()
+{
+    return Chat::where('user_one_id', $this->id)
+               ->orWhere('user_two_id', $this->id);
+}
+
+
 }

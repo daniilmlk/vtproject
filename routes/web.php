@@ -7,6 +7,7 @@ use App\Http\Controllers\CommentController;
 use App\Models\User;
 use App\Models\Post;
 use App\Http\Controllers\FriendshipController;
+use App\Http\Controllers\ChatController;
 
 Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 Route::resource('posts', PostController::class);
@@ -64,6 +65,11 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/friend/{id}', [FriendshipController::class, 'removeFriend'])->name('friend.remove');
     Route::get('/friends', [FriendshipController::class, 'index'])->name('friends.index');
     Route::get('/friends/search', [FriendshipController::class, 'search'])->name('friends.search');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/chat/{user}', [ChatController::class, 'openChat'])->name('chat.open');
+    Route::post('/chat/{user}/send', [ChatController::class, 'sendMessage'])->name('chat.send');
 });
 
 

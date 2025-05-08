@@ -13,7 +13,6 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/custom.css'])
-
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
@@ -30,8 +29,11 @@
 
             <!-- Page Content -->
             <main>
-            @yield('content')
+                @yield('content')
             </main>
+
+            <!-- Chat Window -->
+            @include('chat.window', ['friend' => $friend ?? null, 'messages' => $messages ?? collect()])
         </div>
     </body>
 </html>

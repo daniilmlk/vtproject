@@ -6,6 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Models\User;
 use App\Models\Post;
+use App\Http\Controllers\FriendshipController;
 
 Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 Route::resource('posts', PostController::class);
@@ -55,6 +56,15 @@ Route::get('/admin/dashboard', function () {
 
 Route::delete('/admin/posts/{post}', [PostController::class, 'destroy'])->name('admin.posts.destroy');
 Route::delete('/admin/users/{user}', [ProfileController::class, 'destroy'])->name('admin.users.destroy');
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('/friend-request/{id}', [FriendshipController::class, 'sendRequest'])->name('friend.send');
+    Route::post('/friend-request/{id}/accept', [FriendshipController::class, 'acceptRequest'])->name('friend.accept');
+    Route::post('/friend-request/{id}/decline', [FriendshipController::class, 'declineRequest'])->name('friend.decline');
+    Route::delete('/friend/{id}', [FriendshipController::class, 'removeFriend'])->name('friend.remove');
+    Route::get('/friends', [FriendshipController::class, 'index'])->name('friends.index');
+    Route::get('/friends/search', [FriendshipController::class, 'search'])->name('friends.search');
+});
 
 
 

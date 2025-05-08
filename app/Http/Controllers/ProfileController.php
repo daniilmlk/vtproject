@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileUpdateRequest;
-use Illuminate\Http\RedirectResponse;
+use App\Models\Post;
+use App\Models\User;
+use App\Models\Friendship;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View;
-use App\Models\Post;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
-use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -52,22 +49,45 @@ class ProfileController extends Controller
         return redirect()->route('profile.edit')->with('success', 'Profile updated!');
     }
 
-    public function myProfile()
-{
-    $user = auth()->user();
-    
-    // Fetch user's posts and include likes relationship
-    $posts = Post::where('user_id', $user->id)->latest()->get();
-    $userPosts = Post::where('user_id', Auth::id())->with('likes')->get();
+    /**
+     * Show user's profile with posts and total likes.
+     */
+    public function myProfile(Request $request)
+    {
+        $user = auth()->user();
+        
+        // Fetch user's posts and include likes relationship
+        $posts = Post::where('user_id', $user->id)->latest()->get();
+        $userPosts = Post::where('user_id', Auth::id())->with('likes')->get();
 
-    // Calculate total likes for all posts
-    $totalLikes = $userPosts->sum(function ($post) {
-        return $post->likes->count(); // Sum likes for each post
-    });
+        // Calculate total likes for all posts
+        $totalLikes = $userPosts->sum(function ($post) {
+            return $post->likes->count(); // Sum likes for each post
+        });
 
-    return view('myprofile', compact('user', 'posts', 'totalLikes'));
-}
-public function destroy(User $user): RedirectResponse
+        // Get list of friends (including search functionality)
+        $friendIds = $user->friends()->pluck('friendships.sender_id')
+            ->merge($user->friends()->pluck('friendships.receiver_id'))->toArray();
+
+        $friendIds[] = $user->id;
+
+        // Search functionality for friends
+        $query = $request->input('q');
+        $friends = $user->friends();
+
+        if ($query) {
+            $friends = $friends->where('name', 'like', '%' . $query . '%');
+        }
+
+        $friends = $friends->get();
+
+        return view('myprofile', compact('user', 'posts', 'totalLikes', 'friends'));
+    }
+
+    /**
+     * Delete user.
+     */
+    public function destroy(User $user)
     {
         if (!session('is_admin')) {
             abort(403);
@@ -76,5 +96,4 @@ public function destroy(User $user): RedirectResponse
         $user->delete();
         return redirect()->route('admin.dashboard')->with('success', 'User deleted.');
     }
-
 }
